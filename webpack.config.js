@@ -2,11 +2,11 @@ const path = require('path')
 //webpack是属于node环境,所以默认不支持es6的import,需要使用require
 const HtmlWebpackPlugin = require('html-webpack-plugin'); //HtmlWebpackPlugin属于插件类,需要放到plugins,并通过new的方式来实例化使用
 const {CleanWebpackPlugin} = require('clean-webpack-plugin');//对比官网的例子其使用方法已变更,需要结构
+const webpack = require('webpack')
 
 module.exports = {
   entry:{
-    app:'./src/index.js',
-    print:'./src/print.js'
+    app:'./src/index.js'
   },
   output:{
     filename: '[name].bundle.js', // [name]为entry的key,如entry为app,则filename为app.bundle.js
@@ -21,10 +21,14 @@ module.exports = {
     // 使用该插件后会默认生成html,并自动引入output输出的js文件,可传入option来配置对应的html模板
     // https://github.com/jantimon/html-webpack-plugin#configuration
     
+    // hmr需要的模块 ---开始 
+    new webpack.HotModuleReplacementPlugin()
+    // hmr需要的模块 ---结束
   ],
   // 使用webpack-dev-server启服务,并使用./dist文件夹作为根目录
   // 与webpack的watch模式比,webpack的watch模式不会主动刷新页面
   devServer: { 
-    contentBase: './dist'
-  },
+    contentBase: './dist',
+    hot:true // 开启hmr
+  }
 }
