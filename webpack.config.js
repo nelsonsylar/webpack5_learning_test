@@ -10,8 +10,9 @@ module.exports = {
   },
   output:{
     filename: '[name].bundle.js', // [name]为entry的key,如entry为app,则filename为app.bundle.js
-    path: path.resolve(__dirname,'dist') // webpack涉及到文件地址的情况,均需要使用path,__dirname在node里表示,当前文件所对应的文件夹位置
+    path: path.resolve(__dirname,'dist'), // webpack涉及到文件地址的情况,均需要使用path,__dirname在node里表示,当前文件所对应的文件夹位置
     //而 path.resolve(__dirname,'文件夹名字')是一个固定套路,得到当前目录的dist文件夹位置
+    publicPath: '/' //中间件需要publicPath
   },
   devtool:'inline-source-map', // 打开source-map用于开发环境找错
   plugins:[ 
