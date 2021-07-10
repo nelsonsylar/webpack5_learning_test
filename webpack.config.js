@@ -20,5 +20,10 @@ module.exports = {
     // 使用该插件后会默认生成html,并自动引入output输出的js文件,可传入option来配置对应的html模板
     // https://github.com/jantimon/html-webpack-plugin#configuration
     
-  ]
+  ],
+  // 使用webpack-dev-server启服务,并使用./dist文件夹作为根目录
+  // 与webpack的watch模式比,webpack的watch模式不会主动刷新页面
+  devServer: { 
+    contentBase: './dist'
+  },
 }
