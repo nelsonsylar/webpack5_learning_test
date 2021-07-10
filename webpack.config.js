@@ -30,5 +30,13 @@ module.exports = {
   devServer: { 
     contentBase: './dist',
     hot:true // 开启hmr
-  }
+  },
+  module: {
+    rules: [
+      {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader']
+      }
+    ]
+  },
 }
