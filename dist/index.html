@@ -1,1 +1,20 @@
-<!doctype html><html><head><meta charset="utf-8"><title>Caching</title><meta name="viewport" content="width=device-width,initial-scale=1"><script defer="defer" src="manifest.918a91c8f6e371942d9b.js"></script><script defer="defer" src="vendor.09356dacc97758a0ceaa.js"></script><script defer="defer" src="main.92256948f646484d9521.js"></script></head><body></body></html>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script type='text/javascript' src='https://unpkg.com/lodash@4.16.6'></script>
+</head>
+
+<body>
+  <div id='root'></div>
+  <script src='./webpack-numbers.js'></script>
+  <script>
+    document.getElementById('root').innerHTML = " This is a browser example where and api is called to transalate 'One' to '1' \n Results: wordtonum('One') === " + webpackNumbers.wordToNum('One');
+  </script>
+</body>
+
+</html>

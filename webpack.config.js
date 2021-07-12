@@ -1,31 +1,21 @@
-const path = require('path');
-const {CleanWebpackPlugin} = require('clean-webpack-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+var path = require('path');
+
 module.exports = {
-  entry: {
-    main:'./src/index.js',
-  },
-  plugins: [
-    new CleanWebpackPlugin(),
-    new HtmlWebpackPlugin({
-       title: 'Caching'
-    })
-  ],
+  entry: './src/index.js',
   output: {
-    filename: '[name].[chunkhash].js',
-    path: path.resolve(__dirname, 'dist')
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'webpack-numbers.js',
+    libraryTarget: 'umd', //umd方式(包括AMD,COMMONJS)
+
+    library: 'webpackNumbers', //暴露库名为webpackNumbers,常与globalObject: 'this'一起用
+    globalObject: 'this' // 暴露到哪node =>global window=>window
   },
-  optimization:{
-    runtimeChunk:{
-      name:'manifest' // webpack在入口chunk中,包含了某些样板(webpack运行时的引导代码),这里使用runtimeChunk抽离出来,后续不修改的情况下就使用之前的缓存
-    },
-    splitChunks:{ //把引入的第三方包抽离出来,后续不修改的情况下就使用之前的缓存
-      cacheGroups:{
-        vendor:{
-          name:'vendor',
-          chunks:'initial',
-        }
-      }
+  externals: { // 不把lodash打包,用户应该自行装lodash,
+    lodash: {
+      commonjs: 'lodash',
+      commonjs2: 'lodash',
+      amd: 'lodash',
+      root: '_'
     }
   }
 };
