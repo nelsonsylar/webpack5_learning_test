@@ -1,11 +1,9 @@
-import { file, helpers } from './global.js'
+import 'babel-polyfill';
 function component() {
   var element = document.createElement('div');
 
-  element.innerHTML = join(['Hello', 'join'], ' ');
-  // Assume we are in the context of `window`
-  console.log(file)
-  console.log(helpers)
+  element.innerHTML = join(['Hello', 'webpack'], ' ');
+
   return element;
 }
 
