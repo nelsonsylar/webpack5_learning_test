@@ -1,5 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
+const WorkboxPlugin = require('workbox-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin') 
 module.exports = {
   entry: {
     index:'./src/index.js',
@@ -9,9 +11,15 @@ module.exports = {
     filename: '[name].bundle.js',
     path: path.resolve(__dirname, 'dist')
   },
-  plugins: [
-    new webpack.ProvidePlugin({ // webpack的ProvidePlugin来全局使用lodash
-      join: ['lodash', 'join'] // 取相当于 const {join} = require('lodash') 加入到index.js第一行
+  plugins:[
+    new HtmlWebpackPlugin({
+      title: 'Progressive Web Application'
     }),
+    new WorkboxPlugin.GenerateSW({
+      // 这些选项帮助 ServiceWorkers 快速启用
+      // 不允许遗留任何“旧的” ServiceWorkers
+      clientsClaim: true,
+      skipWaiting: true
+    })
   ]
 };

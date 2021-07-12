@@ -7,7 +7,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack",
-    "watch": "webpack --watch"
+    "watch": "webpack --watch",
+    "start": "http-server dist"
   },
   "keywords": [],
   "author": "",
@@ -26,7 +27,8 @@
     "webpack-cli": "^3.3.12",
     "webpack-dev-middleware": "^5.0.0",
     "webpack-dev-server": "^3.11.2",
-    "webpack-merge": "^5.8.0"
+    "webpack-merge": "^5.8.0",
+    "workbox-webpack-plugin": "^6.1.5"
   },
   "dependencies": {
     "lodash": "^4.17.21",
