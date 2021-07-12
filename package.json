@@ -6,7 +6,7 @@
   "main": "dist/webpack-numbers.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack",
+    "build": "webpack --env.NODE_ENV=local --env.production --progress",
     "watch": "webpack --watch",
     "start": "http-server dist"
   },
