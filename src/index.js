@@ -1,11 +1,11 @@
-// 使用webpack的ProvidePlugin来全局使用lodash
+import { file, helpers } from './global.js'
 function component() {
   var element = document.createElement('div');
-  console.log(join)
-  console.log(window.join)
-  console.log(_)
-  element.innerHTML = join(['Hello', 'join'], ' ');
 
+  element.innerHTML = join(['Hello', 'join'], ' ');
+  // Assume we are in the context of `window`
+  console.log(file)
+  console.log(helpers)
   return element;
 }
 
