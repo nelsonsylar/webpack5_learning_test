@@ -9,7 +9,7 @@ module.exports = {
   },
   plugins: [
     new webpack.ProvidePlugin({ // webpack的ProvidePlugin来全局使用lodash
-      _: 'lodash'
+      join: ['lodash', 'join'] // 取相当于 const {join} = require('lodash') 加入到index.js第一行
     }),
     new HtmlWebpackPlugin({title:'ProvidePlugin全局注入lodash'})
   ]

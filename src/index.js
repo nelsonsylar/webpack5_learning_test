@@ -1,8 +1,10 @@
 // 使用webpack的ProvidePlugin来全局使用lodash
 function component() {
   var element = document.createElement('div');
-
-  element.innerHTML = _.join(['Hello', 'webpack'], ' ');
+  console.log(join)
+  console.log(window.join)
+  console.log(_)
+  element.innerHTML = join(['Hello', 'join'], ' ');
 
   return element;
 }
