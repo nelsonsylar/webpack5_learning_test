@@ -31,6 +31,7 @@ module.exports = {
     contentBase: './dist',
     hot:true // 开启hmr
   },
+  mode: "production",
   module: {
     rules: [
       {
