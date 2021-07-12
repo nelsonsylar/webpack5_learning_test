@@ -1,21 +1,16 @@
-var path = require('path');
-
+const path = require('path');
+const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 module.exports = {
   entry: './src/index.js',
   output: {
-    path: path.resolve(__dirname, 'dist'),
-    filename: 'webpack-numbers.js',
-    libraryTarget: 'umd', //umd方式(包括AMD,COMMONJS)
-
-    library: 'webpackNumbers', //暴露库名为webpackNumbers,常与globalObject: 'this'一起用
-    globalObject: 'this' // 暴露到哪node =>global window=>window
+    filename: 'bundle.js',
+    path: path.resolve(__dirname, 'dist')
   },
-  externals: { // 不把lodash打包,用户应该自行装lodash,
-    lodash: {
-      commonjs: 'lodash',
-      commonjs2: 'lodash',
-      amd: 'lodash',
-      root: '_'
-    }
-  }
+  plugins: [
+    new webpack.ProvidePlugin({ // webpack的ProvidePlugin来全局使用lodash
+      _: 'lodash'
+    }),
+    new HtmlWebpackPlugin({title:'ProvidePlugin全局注入lodash'})
+  ]
 };

@@ -1,14 +1,10 @@
-import _ from 'lodash';
-import numRef from './ref.json';
+// 使用webpack的ProvidePlugin来全局使用lodash
+function component() {
+  var element = document.createElement('div');
 
-export function numToWord(num) {
-  return _.reduce(numRef, (accum, ref) => {
-    return ref.num === num ? ref.word : accum;
-  }, '');
-};
+  element.innerHTML = _.join(['Hello', 'webpack'], ' ');
 
-export function wordToNum(word) {
-  return _.reduce(numRef, (accum, ref) => {
-    return ref.word === word && word.toLowerCase() ? ref.num : accum;
-  }, -1);
-};
+  return element;
+}
+
+document.body.appendChild(component());
