@@ -1,14 +1,26 @@
 const path = require('path')
-module.exports = env => {
-  // Use env.<YOUR VARIABLE> here:
-  console.log('NODE_ENV: ', env.NODE_ENV) // 'local'
-  console.log('Production: ', env.production) // true
-
-  return {
+const HTMLWebpackPlugin = require('html-webpack-plugin');
+module.exports = {
+    mode:'none',
     entry: './src/index.js',
     output: {
-      filename: 'bundle.js',
+      filename: '[name].bundle.js',
       path: path.resolve(__dirname, 'dist')
-    }
-  }
+    },
+    optimization:{
+      splitChunks:{
+        cacheGroups:{
+          lodash: {
+            name: 'lodash',
+            chunks: 'all',
+            test: /lodash/
+        },
+        }
+      }
+    },
+    plugins: [
+      new HTMLWebpackPlugin({
+        title: 'Code Splitting'
+      }),
+    ],
 }
