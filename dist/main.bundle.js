@@ -8,12 +8,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
 /* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_0__);
 
+
 function component() {
-  var element = document.createElement('div');
+  var element = document.createElement('div'); // Lodash通过npm包以es6的模块方式引入
 
-  // Lodash通过npm包以es6的模块方式引入
   element.innerHTML = lodash__WEBPACK_IMPORTED_MODULE_0___default().join(['Hello', 'webpack'], ' ');
-
   return element;
 }
 

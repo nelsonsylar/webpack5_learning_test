@@ -1,6 +1,7 @@
-import _ from 'lodash'
+import _ from 'lodash';
+
 function component() {
-  var element = document.createElement('div');
+  const element = document.createElement('div');
 
   // Lodash通过npm包以es6的模块方式引入
   element.innerHTML = _.join(['Hello', 'webpack'], ' ');

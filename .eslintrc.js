@@ -1,0 +1,12 @@
+module.exports = {
+  parser: '@babel/eslint-parser',
+  parserOptions: { requireConfigFile: 'false' },
+  extends: 'airbnb',
+  env: {
+    browser: true,
+    node: true,
+  },
+  rules: {
+    semi: 'error',
+  },
+};
